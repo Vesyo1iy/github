@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кофейная культура | Искусство приготовления кофе</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f5f0;
+            color: #3e2723;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: #5d4037;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #6d4c41;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #8d6e63;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Шапка сайта */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+        
+        /* Навигация */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(62, 39, 35, 0.95);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #d7ccc8;
+        }
+        
+        /* О кофе */
+        .about-coffee {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Виды кофе */
+        .coffee-types {
+            text-align: center;
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .type-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .type-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .type-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .type-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .type-card:hover .type-image img {
+            transform: scale(1.1);
+        }
+        
+        .type-info {
+            padding: 20px;
+        }
+        
+        /* Приготовление */
+        .brewing-methods {
+            background-color: #f5f5f5;
+        }
+        
+        .methods-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            border-bottom: 2px solid #6d4c41;
+            color: #6d4c41;
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .method-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .method-text {
+            flex: 1;
+        }
+        
+        .method-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .method-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Контакты */
+        .contact {
+            text-align: center;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: #3e2723;
+            color: #d7ccc8;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            padding: 0 20px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #d7ccc8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #5d4037;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: #8d6e63;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #5d4037;
+            font-size: 0.9rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content,
+            .method-content {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">CoffeeCulture</a>
+            <ul class="nav-links">
+                <li><a href="#about">О кофе</a></li>
+                <li><a href="#types">Виды кофе</a></li>
+                <li><a href="#brewing">Приготовление</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Шапка -->
+    <header>
+        <h1>Искусство кофе</h1>
+        <p>Откройте для себя мир изысканных вкусов и ароматов. Узнайте о различных способах приготовления кофе и найдите свой идеальный напиток.</p>
+        <a href="#about" class="btn">Узнать больше</a>
+    </header>
+
+    <!-- О кофе -->
+    <section id="about" class="about-coffee">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>О кофейной культуре</h2>
+                    <p>Кофе — это не просто напиток, это целая культура со своей историей, традициями и ритуалами. На протяжении веков кофе объединял людей, вдохновлял на творчество и становился частью повседневной жизни миллионов.</p>
+                    <p>Сегодня кофейная культура переживает настоящий ренессанс. Бариста со всего мира совершенствуют искусство приготовления кофе, экспериментируя с различными методами заваривания, температурой воды и временем экстракции.</p>
+                    <p>Присоединяйтесь к сообществу ценителей кофе и откройте для себя новые грани этого удивительного напитка.</p>
+                    <a href="#types" class="btn">Исследовать виды кофе</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Кофейные зерна">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Виды кофе -->
+    <section id="types" class="coffee-types">
+        <div class="container">
+            <h2>Популярные виды кофе</h2>
+            <p>От классического эспрессо до современных авторских напитков</p>
+            
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-image">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Эспрессо">
+                    </div>
+                    <div class="type-info">
+                        <h3>Эспрессо</h3>
+                        <p>Концентрированный кофейный напиток, приготовленный путем пропускания горячей воды под давлением через молотые кофейные зерна.</p>
+                    </div>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-image">
+                        <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Капучино">
+                    </div>
+                    <div class="type-info">
+                        <h3>Капучино</h3>
+                        <p>Итальянский кофейный напиток, состоящий из равных частей эспрессо, вспененного молока и молочной пены.</p>
+                    </div>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-image">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Латте">
+                    </div>
+                    <div class="type-info">
+                        <h3>Латте</h3>
+                        <p>Кофейный напиток на основе эспрессо с большим количеством вспененного молока и небольшим слоем пены.</p>
+                    </div>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Американо">
+                    </div>
+                    <div class="type-info">
+                        <h3>Американо</h3>
+                        <p>Кофейный напиток, приготовленный путем добавления горячей воды к эспрессо, что придает ему похожий на фильтрованный кофе вкус, но с другой текстурой.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Приготовление -->
+    <section id="brewing" class="brewing-methods">
+        <div class="container">
+            <h2>Методы приготовления кофе</h2>
+            <p>Откройте для себя различные способы заваривания кофе</p>
+            
+            <div class="methods-tabs">
+                <button class="tab-btn active" data-tab="french-press">Френч-пресс</button>
+                <button class="tab-btn" data-tab="pour-over">Пуровер</button>
+                <button class="tab-btn" data-tab="aeropress">Аэропресс</button>
+            </div>
+            
+            <div class="tab-content active" id="french-press">
+                <div class="method-content">
+                    <div class="method-text">
+                        <h3>Френч-пресс</h3>
+                        <p>Френч-пресс — это простой и эффективный способ приготовления кофе, который позволяет получить насыщенный и ароматный напиток с сохранением кофейных масел.</p>
+                        <p>Процесс приготовления:</p>
+                        <ol>
+                            <li>Измельчите кофейные зерна до грубого помола</li>
+                            <li>Насыпьте молотый кофе в колбу френч-пресса</li>
+                            <li>Залейте горячей водой (около 95°C)</li>
+                            <li>Перемешайте и оставьте на 4 минуты</li>
+                            <li>Медленно опустите поршень и разлейте кофе</li>
+                        </ol>
+                    </div>
+                    <div class="method-image">
+                        <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Френч-пресс">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="pour-over">
+                <div class="method-content">
+                    <div class="method-text">
+                        <h3>Пуровер (Pour Over)</h3>
+                        <p>Метод пуровер позволяет контролировать каждый аспект процесса заваривания, что делает его популярным среди кофейных энтузиастов.</p>
+                        <p>Процесс приготовления:</p>
+                        <ol>
+                            <li>Поместите фильтр в воронку и смочите его горячей водой</li>
+                            <li>Добавьте молотый кофе среднего помола</li>
+                            <li>Начните заливать воду небольшими круговыми движениями</li>
+                            <li>Дайте кофе "расцвести" в течение 30 секунд</li>
+                            <li>Продолжайте медленно добавлять воду до нужного объема</li>
+                            <li>Общее время заваривания должно составлять 2,5-3,5 минуты</li>
+                        </ol>
+                    </div>
+                    <div class="method-image">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Пуровер">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="aeropress">
+                <div class="method-content">
+                    <div class="method-text">
+                        <h3>Аэропресс</h3>
+                        <p>Аэропресс — это портативное устройство для приготовления кофе, которое сочетает в себе скорость приготовления и чистый вкус напитка.</p>
+                        <p>Процесс приготовления (прямой метод):</p>
+                        <ol>
+                            <li>Установите Аэропресс над кружкой</li>
+                            <li>Добавьте молотый кофе среднего помола</li>
+                            <li>Залейте горячей водой и перемешайте</li>
+                            <li>Установите поршень и медленно надавите в течение 20-30 секунд</li>
+                        </ol>
+                        <p>Аэропресс также позволяет экспериментировать с методом инверсии для более длительного времени экстракции.</p>
+                    </div>
+                    <div class="method-image">
+                        <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Аэропресс">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Свяжитесь с нами</h2>
+            <p>Есть вопросы о кофе или хотите поделиться своим опытом? Напишите нам!</p>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" placeholder="Введите ваше имя">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Ваш email</label>
+                    <input type="email" id="email" placeholder="Введите ваш email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Сообщение</label>
+                    <textarea id="message" placeholder="Напишите ваше сообщение"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Отправить сообщение</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CoffeeCulture</h3>
+                    <p>Мы делимся страстью к кофе и помогаем каждому найти свой идеальный напиток.</p>
+                    <div class="social-links">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">TW</a>
+                        <a href="#">YT</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Быстрые ссылки</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">О кофе</a></li>
+                        <li><a href="#types">Виды кофе</a></li>
+                        <li><a href="#brewing">Приготовление</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li>г. Москва, ул. Кофейная, 15</li>
+                        <li>+7 (495) 123-45-67</li>
+                        <li>info@coffeeculture.ru</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CoffeeCulture. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка для навигационных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Изменение навигации при прокрутке
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if(window.scrollY > 100) {
+                nav.style.padding = '10px 0';
+                nav.style.backgroundColor = 'rgba(62, 39, 35, 0.98)';
+            } else {
+                nav.style.padding = '15px 0';
+                nav.style.backgroundColor = 'rgba(62, 39, 35, 0.95)';
+            }
+        });
+        
+        // Табы для методов приготовления
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Убираем активный класс у всех кнопок и контента
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Добавляем активный класс к текущей кнопке
+                btn.classList.add('active');
+                
+                // Показываем соответствующий контент
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Обработка формы
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
+        });
+        
+        // Мобильное меню
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
